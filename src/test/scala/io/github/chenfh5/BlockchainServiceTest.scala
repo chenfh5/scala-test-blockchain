@@ -9,7 +9,7 @@ class BlockchainServiceTest {
   @Test(enabled = true, priority = 1)
   def sha256Test() = {
     val blockchainService = new BlockchainService()
-    val res = blockchainService.getSHA256("I am Satoshi Nakamoto13")
+    val res = OwnUtil.getSHA256("I am Satoshi Nakamoto13")
     val expect = "0ebc56d59a34f5082aaef3d66b37a661696c2b618e62432727216ba9531041a5"
     Assert.assertTrue(expect == res)
   }
@@ -28,7 +28,7 @@ class BlockchainServiceTest {
   }
 
   private def insertBlock(blockchainService: BlockchainService, ownData: String) = {
-    val block = blockchainService.generateBlock(blockchainService.getLatestBlock, ownData)
+    val block = OwnUtil.generateBlock(blockchainService.getLatestBlock, ownData)
     blockchainService.add(block)
   }
 
